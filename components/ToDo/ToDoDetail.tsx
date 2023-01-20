@@ -1,23 +1,19 @@
+import { IsAddToDoModalState } from "@/recoil/states";
 import React, { useState } from "react";
+import { useRecoilState } from "recoil";
 import { IToDoDetailViewProps } from "./types";
 import ToDoDetailView from "./view/ToDoDetailView";
 
 const ToDoDetail = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useRecoilState(IsAddToDoModalState);
 
   const handleModalOpen = () => {
     setIsOpen(true);
-  };
-  const handleModalClose = () => {
-    if (confirm("정말 닫으시겠습니까?")) {
-      setIsOpen(false);
-    }
   };
 
   const ToDoDetailViewProps: IToDoDetailViewProps = {
     isOpen,
     handleModalOpen,
-    handleModalClose,
   };
 
   return <ToDoDetailView {...ToDoDetailViewProps} />;

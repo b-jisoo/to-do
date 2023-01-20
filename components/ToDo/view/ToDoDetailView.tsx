@@ -4,6 +4,7 @@ import { flexCenter } from "@/styles/flex";
 import { StyledButton } from "@/styles/StyledButton";
 import React from "react";
 import styled from "styled-components";
+import AddToDoModal from "../AddToDoModal";
 import { IToDoDetailViewProps } from "../types";
 
 const Container = styled.div`
@@ -42,11 +43,7 @@ const NewButton = styled(StyledButton)`
   }
 `;
 
-const ToDoDetailView = ({
-  isOpen,
-  handleModalOpen,
-  handleModalClose,
-}: IToDoDetailViewProps) => {
+const ToDoDetailView = ({ isOpen, handleModalOpen }: IToDoDetailViewProps) => {
   return (
     <Container>
       <ToDoHeader>
@@ -55,10 +52,7 @@ const ToDoDetailView = ({
         <NewButton onClick={handleModalOpen}>New</NewButton>
       </ToDoHeader>
       {/* 모달창의 view */}
-      {/* isOpen 리덕스로 대체 해야함 */}
-      <ModalBase visible={isOpen} onClose={handleModalClose}>
-        <div>모달에 들어갈 콘텐츠입니다.</div>
-      </ModalBase>
+      <AddToDoModal />
 
       {/* 생성된 todo가 map으로 생성될 부분  */}
       <Article>

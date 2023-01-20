@@ -1,3 +1,4 @@
+import Button from "@mui/material/Button";
 import styled, { css, keyframes } from "styled-components";
 import { IModalProps } from "../types";
 
@@ -39,7 +40,7 @@ const Background = styled.div<{ visible: boolean }>`
 `;
 
 const ModalSection = styled.div<{ visible: boolean }>`
-  width: 400px;
+  width: 600px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -56,6 +57,9 @@ const Title = styled.div`
 `;
 
 const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   padding: 16px 0;
 `;
 
@@ -64,8 +68,12 @@ const CloseButton = styled.button`
   background: none;
   cursor: pointer;
 `;
+const Footer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
-const ModalView = ({ children, visible, onClose }: IModalProps) => {
+const ModalView = ({ children, visible, onClose, footer }: IModalProps) => {
   return (
     <>
       <Background visible={visible} onClick={onClose} />
@@ -76,6 +84,7 @@ const ModalView = ({ children, visible, onClose }: IModalProps) => {
           </CloseButton>
         </Title>
         <Content>{children}</Content>
+        <Footer>{footer}</Footer>
       </ModalSection>
     </>
   );
