@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Image from "next/image";
 
 const Container = styled.div`
   display: flex;
@@ -9,9 +10,17 @@ const Container = styled.div`
   min-height: 100vh;
   background-color: #fafafa;
 `;
-const Wrap = styled.div`
-  margin-top: 50px;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+
+  img {
+    cursor: pointer;
+    margin-left: 10px;
+  }
 `;
+const Wrap = styled.div``;
 
 const List = styled.div`
   font-weight: 600;
@@ -27,6 +36,15 @@ const List = styled.div`
 const TodoListView = () => {
   return (
     <Container>
+      <ButtonContainer>
+        <Image src="/addFolder.png" alt="addfolder" width="20" height="20" />
+        <Image
+          src="/deleteFolder.png"
+          alt="deletefolder"
+          width="20"
+          height="20"
+        />
+      </ButtonContainer>
       <Wrap>
         <List>테스트1</List>
         <List>Test 2</List>

@@ -32,6 +32,14 @@ const ToDoHeader = styled.div`
   font-size: 23px;
   margin: 50px 0;
 `;
+const ToDoFooter = styled.div`
+  ${flexCenter}
+  justify-content: end;
+  width: 100%;
+  font-weight: bold;
+  font-size: 23px;
+  margin: 50px 0;
+`;
 
 const NewButton = styled(StyledButton)`
   background: #228be6;
@@ -40,6 +48,15 @@ const NewButton = styled(StyledButton)`
   }
   &:active {
     background: #1c7ed6;
+  }
+`;
+const DeleteButton = styled(StyledButton)`
+  background: #dc3545;
+  &:hover {
+    background: #bb2d3b;
+  }
+  &:active {
+    background: #b02a37;
   }
 `;
 
@@ -68,6 +85,9 @@ const ToDoDetailView = ({ isOpen, handleModalOpen }: IToDoDetailViewProps) => {
       <Article>
         <Checkbox text={"test 3"} />
       </Article>
+      <ToDoFooter>
+        <DeleteButton>Delete</DeleteButton>
+      </ToDoFooter>
     </Container>
   );
 };
