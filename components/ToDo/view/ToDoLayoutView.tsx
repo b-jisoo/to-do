@@ -2,7 +2,7 @@ import { flexCenter } from "@/styles/flex";
 import React from "react";
 import styled from "styled-components";
 import ToDoDetail from "../ToDoDetail";
-import TodoList from "../todoList";
+import TodoList from "../TodoList";
 
 const Container = styled.section`
   display: flex;

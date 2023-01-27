@@ -1,8 +1,10 @@
 import { flexCenter } from "@/styles/flex";
 import styled from "styled-components";
 import React from "react";
-import { StyledButton } from "@/styles/StyledButton";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
+import { BlueStyle } from "@/styles/blue";
+import { IHeaderProps } from "../type";
 
 const Container = styled.nav`
   ${flexCenter}
@@ -27,30 +29,28 @@ const Logo = styled.div`
   font-weight: bold;
 `;
 
+const LogOutButton = styled.div`
+  ${BlueStyle}
+`;
+
 const LoginButton = styled.div`
-  margin-right: 5px;
   a {
-    text-decoration-line: none;
-    font-weight: 700;
-    background-color: white;
-    color: #228be6;
-    &:hover {
-      color: #339af0;
-    }
-    &:active {
-      color: #1c7ed6;
-    }
+    ${BlueStyle}
   }
 `;
 
-const HeaderView = () => {
+const HeaderView = ({ status, session }: IHeaderProps) => {
   return (
     <Container id="Header">
       <Wrapper>
         <Logo>ToDos</Logo>
-        <LoginButton>
-          <Link href={"/auth/login"}>로그인</Link>
-        </LoginButton>
+        {session ? (
+          <LogOutButton onClick={() => signOut()}>로그아웃</LogOutButton>
+        ) : (
+          <LoginButton>
+            <Link href={"/auth/login"}>로그인</Link>
+          </LoginButton>
+        )}
       </Wrapper>
     </Container>
   );

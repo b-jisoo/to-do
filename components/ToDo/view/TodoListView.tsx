@@ -20,7 +20,9 @@ const ButtonContainer = styled.div`
     margin-left: 10px;
   }
 `;
-const Wrap = styled.div``;
+const Wrap = styled.div`
+  margin-top: 20px;
+`;
 
 const List = styled.div`
   font-weight: 600;
@@ -46,7 +48,7 @@ const TodoListView = () => {
         />
       </ButtonContainer>
       <Wrap>
-        <List>테스트1</List>
+        <List>테스트1 (4/4)</List>
         <List>Test 2</List>
         <List>테스트 3</List>
         <List>Test4</List>
