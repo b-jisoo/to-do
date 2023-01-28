@@ -1,7 +1,7 @@
 import AuthAPI from "@/api/auth";
 import { signIn } from "next-auth/react";
 import React, { SyntheticEvent, useState } from "react";
-import { emailValidator, passwordValidator } from "../util/validator";
+import { emailValidator, passwordValidator } from "../../utils/validator";
 import { ILoginProps } from "./types";
 import LoginView from "./view/LoginView";
 

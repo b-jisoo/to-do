@@ -1,4 +1,4 @@
-import { IsAddToDoModalState } from "@/recoil/states";
+import { IsAddToDoModalState } from "@/recoil/Modal";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { IAddToDoModalProps } from "./types";

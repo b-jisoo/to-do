@@ -16,14 +16,7 @@ const Container = styled.div`
   min-height: 100vh;
   padding: 0px 70px;
 `;
-const Article = styled.article`
-  ${flexCenter}
-  justify-content: start;
-  border-bottom: 1px solid #cecece;
-  width: 100%;
-  height: 50px;
-  margin-bottom: 20px;
-`;
+
 const ToDoHeader = styled.div`
   ${flexCenter}
   justify-content: space-between;
@@ -59,31 +52,40 @@ const DeleteButton = styled(StyledButton)`
     background: #b02a37;
   }
 `;
+const Article = styled.article`
+  ${flexCenter}
+  justify-content: start;
+  border-bottom: 1px solid #cecece;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 20px;
+`;
 
-const ToDoDetailView = ({ isOpen, handleModalOpen }: IToDoDetailViewProps) => {
+const ToDoDetailView = ({
+  isOpen,
+  todoList,
+  handleModalOpen,
+}: IToDoDetailViewProps) => {
   return (
     <Container>
       <ToDoHeader>
         <span>ToDos</span>
-        {/* 모달창 여는 버튼 */}
         <NewButton onClick={handleModalOpen}>New</NewButton>
       </ToDoHeader>
-      {/* 모달창의 view */}
       <AddToDoModal />
 
       {/* 생성된 todo가 map으로 생성될 부분  */}
+
+      {/* {todoList.map((todoItem) => (
+        <ToDoItemView key={todoItem.id} todoItem={todoItem} />
+      ))} */}
+
       <Article>
         <Checkbox
           text={
             "테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1"
           }
         />
-      </Article>
-      <Article>
-        <Checkbox text={"테스트2"} />
-      </Article>
-      <Article>
-        <Checkbox text={"test 3"} />
       </Article>
       <ToDoFooter>
         <DeleteButton>Delete</DeleteButton>
