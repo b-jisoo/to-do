@@ -1,8 +1,8 @@
 import React from "react";
-import { IAddToDoModalListProps } from "../types";
 import ModalBase from "@/components/Common/Modal";
 import { Button, TextField } from "@mui/material";
 import styled from "styled-components";
+import { IAddToDoListModalProps } from "../type";
 
 const Title = styled.div`
   font-size: 24px;
@@ -16,7 +16,7 @@ const AddToDoListModalView = ({
   onCloseModal,
   onAddToDoList,
   onChangeTitle,
-}: IAddToDoModalListProps) => {
+}: IAddToDoListModalProps) => {
   return (
     <>
       <ModalBase

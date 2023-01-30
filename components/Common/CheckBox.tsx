@@ -2,7 +2,7 @@ import React, { SyntheticEvent, useState } from "react";
 import styled from "styled-components";
 import { ICheckbox } from "./types";
 
-function Checkbox({ text }: ICheckbox) {
+function Checkbox({ contents, title }: ICheckbox) {
   const [isCheckd, setIsCheckd] = useState<boolean>(false);
 
   const handleClick = (e: SyntheticEvent) => {
@@ -10,9 +10,12 @@ function Checkbox({ text }: ICheckbox) {
   };
 
   return (
-    <StyledLabel htmlFor={text} onClick={handleClick}>
-      <StyledInput type="checkbox" id={text} name={text} />
-      <StyledP isCheckd={isCheckd}>{text}</StyledP>
+    <StyledLabel htmlFor={contents} onClick={handleClick}>
+      <StyledInput type="checkbox" id={contents} name={contents} />
+      <StyledP isCheckd={isCheckd}>
+        <BoldFont>{title}</BoldFont>
+        {contents}
+      </StyledP>
     </StyledLabel>
   );
 }
@@ -31,6 +34,7 @@ const StyledInput = styled.input`
   border: 1.5px solid gainsboro;
   border-radius: 0.35rem;
   width: 1.5rem;
+  min-width: 1.5rem;
   height: 1.5rem;
   cursor: pointer;
 
@@ -44,7 +48,12 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledP = styled.p<{ isCheckd: boolean }>`
+const StyledP = styled.div<{ isCheckd: boolean }>`
   margin-left: 15px;
   text-decoration: ${(props) => (props.isCheckd ? "line-through" : "none")};
+`;
+
+const BoldFont = styled.h1`
+  font-weight: 700;
+  font-size: 25px;
 `;

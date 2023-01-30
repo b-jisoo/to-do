@@ -2,7 +2,7 @@ import ModalBase from "@/components/Common/Modal";
 import { Button, TextField } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
-import { IAddToDoModalProps } from "../types";
+import { IAddToDoModalProps } from "../type";
 
 const Title = styled.div`
   font-size: 24px;
@@ -15,6 +15,7 @@ const AddToDoModalView = ({
   onCloseModal,
   onChangeTitle,
   onChangeContent,
+  onAddToDoItem,
   toDoData,
 }: IAddToDoModalProps) => {
   return (
@@ -27,7 +28,7 @@ const AddToDoModalView = ({
             <Button onClick={onCloseModal} color="inherit" variant="outlined">
               닫기
             </Button>
-            <Button onClick={onCloseModal} variant="outlined">
+            <Button onClick={onAddToDoItem} variant="outlined">
               등록
             </Button>
           </>
@@ -41,7 +42,7 @@ const AddToDoModalView = ({
         />
         <TextField
           onChange={onChangeContent}
-          value={toDoData.content}
+          value={toDoData.contents}
           label="Content"
           multiline
           minRows={5}

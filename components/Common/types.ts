@@ -2,7 +2,8 @@ import { IChildrenProps } from "@/types/children";
 import { ReactNode } from "react";
 
 export interface ICheckbox {
-  text: string;
+  title: string;
+  contents: string;
 }
 
 export type IModalProps = {

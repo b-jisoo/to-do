@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { ITodoListViewProps } from "../types";
-import AddToDoListModal from "../AddToDoListModal";
+import AddToDoListModal from "@/components/ToDoModal/AddToDoListModal";
+import ListItem from "../listItem";
 
 const Container = styled.div`
   display: flex;
@@ -22,26 +23,8 @@ const ButtonContainer = styled.div`
     margin-left: 10px;
   }
 `;
-const Wrap = styled.div`
-  margin-top: 20px;
-`;
 
-const List = styled.div`
-  font-weight: 600;
-  padding: 10px 30px;
-  font-size: 20px;
-  border-radius: 0.5em;
-  cursor: pointer;
-  :hover {
-    background-color: #cecece;
-  }
-`;
-
-const TodoListView = ({
-  ToDo,
-  isOpen,
-  onAddToDoListModalOpen,
-}: ITodoListViewProps) => {
+const TodoListView = ({ ToDo, onAddToDoListModalOpen }: ITodoListViewProps) => {
   return (
     <Container>
       <ButtonContainer>
@@ -53,11 +36,11 @@ const TodoListView = ({
           onClick={onAddToDoListModalOpen}
         />
       </ButtonContainer>
-      <Wrap>
+      <div>
         {ToDo.map((todoList, index) => (
-          <List key={todoList.id}>{`${todoList.title} `}</List>
+          <ListItem todoList={todoList} key={todoList.id} />
         ))}
-      </Wrap>
+      </div>
       <AddToDoListModal />
     </Container>
   );

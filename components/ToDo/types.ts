@@ -1,23 +1,14 @@
-import { TodoList } from "@/recoil/ToDo";
+import { IToDoItem, TodoList } from "@/recoil/ToDo";
 
+export interface IToDoListItemProps {
+  todoList: TodoList;
+}
+export interface IToDoListItemViewProps {
+  todoList: TodoList;
+  onDeleteToDoList: (id: string) => void;
+}
 export interface IToDoDetailViewProps {
-  isOpen: boolean;
-  todoList: TodoList[];
   handleModalOpen: () => void;
-}
-export interface IAddToDoModalProps {
-  isOpen: boolean;
-  toDoData: { title: string; content: string };
-  onCloseModal: () => void;
-  onChangeTitle: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onChangeContent: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-export interface IAddToDoModalListProps {
-  isOpen: boolean;
-  title: string;
-  onCloseModal: () => void;
-  onAddToDoList: () => void;
-  onChangeTitle: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface ITodoListViewProps {
@@ -25,6 +16,10 @@ export interface ITodoListViewProps {
   isOpen: boolean;
   onAddToDoListModalOpen: () => void;
 }
-export interface IToDoItemViewProps {
-  todoItem: TodoList;
+export interface ITodoItemViewProps {
+  todoItem: IToDoItem[];
+  todoList: TodoList[];
+}
+export interface IEmptyProps {
+  text: string;
 }

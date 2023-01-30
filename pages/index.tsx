@@ -1,6 +1,6 @@
 import Seo from "@/components/Common/Seo";
 import Header from "@/components/Layout/header";
-import TodoLayout from "@/components/ToDo/ToDoLayout";
+import TodoLayout from "@/components/ToDo/Layout";
 
 export default function HomePage() {
   return (

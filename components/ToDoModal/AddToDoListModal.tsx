@@ -1,10 +1,10 @@
 import { IsAddToDoModalListState } from "@/recoil/Modal";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
-import { IAddToDoModalListProps as IAddToDoListModalProps } from "./types";
 import { v4 as uuidv4 } from "uuid";
 import { todoListState } from "@/recoil/ToDo";
-import AddToDoListModalView from "./view/AddToDoListModalView";
+import AddToDoListModalView from "./View/AddToDoListModalView";
+import { IAddToDoListModalProps } from "./type";
 
 const AddToDoListModal = () => {
   const [isOpen, setIsOpen] = useRecoilState(IsAddToDoModalListState);

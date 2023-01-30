@@ -1,12 +1,12 @@
 import { IsAddToDoModalListState, IsAddToDoModalState } from "@/recoil/Modal";
 import { todoListState } from "@/recoil/ToDo";
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { ITodoListViewProps } from "./types";
-import TodoListView from "./view/TodoListView";
+import TodoListView from "./view/ListView";
 
 const TodoList = () => {
-  const ToDo = useRecoilValue(todoListState);
+  const [ToDo, setToDo] = useRecoilState(todoListState);
   const [isOpen, setIsOpen] = useRecoilState(IsAddToDoModalListState);
 
   const onAddToDoListModalOpen = () => {

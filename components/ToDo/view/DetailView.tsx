@@ -1,11 +1,11 @@
 import Checkbox from "@/components/Common/CheckBox";
-import ModalBase from "@/components/Common/Modal";
 import { flexCenter } from "@/styles/flex";
+import styled from "styled-components";
 import { StyledButton } from "@/styles/StyledButton";
 import React from "react";
-import styled from "styled-components";
-import AddToDoModal from "../AddToDoModal";
 import { IToDoDetailViewProps } from "../types";
+import ToDoItem from "../Item";
+import AddToDoModal from "@/components/ToDoModal/AddToDoModal";
 
 const Container = styled.div`
   display: flex;
@@ -52,20 +52,8 @@ const DeleteButton = styled(StyledButton)`
     background: #b02a37;
   }
 `;
-const Article = styled.article`
-  ${flexCenter}
-  justify-content: start;
-  border-bottom: 1px solid #cecece;
-  width: 100%;
-  height: 50px;
-  margin-bottom: 20px;
-`;
 
-const ToDoDetailView = ({
-  isOpen,
-  todoList,
-  handleModalOpen,
-}: IToDoDetailViewProps) => {
+const ToDoDetailView = ({ handleModalOpen }: IToDoDetailViewProps) => {
   return (
     <Container>
       <ToDoHeader>
@@ -73,20 +61,7 @@ const ToDoDetailView = ({
         <NewButton onClick={handleModalOpen}>New</NewButton>
       </ToDoHeader>
       <AddToDoModal />
-
-      {/* 생성된 todo가 map으로 생성될 부분  */}
-
-      {/* {todoList.map((todoItem) => (
-        <ToDoItemView key={todoItem.id} todoItem={todoItem} />
-      ))} */}
-
-      <Article>
-        <Checkbox
-          text={
-            "테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1테스트1"
-          }
-        />
-      </Article>
+      <ToDoItem />
       <ToDoFooter>
         <DeleteButton>Delete</DeleteButton>
       </ToDoFooter>

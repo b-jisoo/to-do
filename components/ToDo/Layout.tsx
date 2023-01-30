@@ -1,5 +1,5 @@
 import React from "react";
-import ToDoLayoutView from "./view/ToDoLayoutView";
+import ToDoLayoutView from "./view/LayoutView";
 
 const TodoLayout = () => {
   return <ToDoLayoutView />;
