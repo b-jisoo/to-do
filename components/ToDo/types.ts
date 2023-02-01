@@ -5,7 +5,9 @@ export interface IToDoListItemProps {
 }
 export interface IToDoListItemViewProps {
   todoList: TodoList;
+  activeList: string;
   onDeleteToDoList: (id: string) => void;
+  onActiveList: (id: string) => void;
 }
 export interface IToDoDetailViewProps {
   handleModalOpen: () => void;
