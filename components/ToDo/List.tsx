@@ -1,7 +1,7 @@
-import { IsAddToDoModalListState, IsAddToDoModalState } from "@/recoil/Modal";
+import { IsAddToDoModalListState } from "@/recoil/Modal";
 import { todoListState } from "@/recoil/ToDo";
-import React, { SyntheticEvent } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import React from "react";
+import { useRecoilState } from "recoil";
 import { ITodoListViewProps } from "./types";
 import TodoListView from "./view/ListView";
 

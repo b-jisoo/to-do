@@ -2,15 +2,21 @@ import { atom } from "recoil";
 
 export interface IToDoItem {
   id: string;
+  listId: string;
   title: string;
   contents: string;
   isComplete: boolean;
+}
+export interface ICopyToDoItem {
+  id?: string;
+  title?: string;
+  toDoItem?: IToDoItem[];
 }
 
 export interface TodoList {
   id: string;
   title: string;
-  toDoItem?: IToDoItem[];
+  toDoItem: IToDoItem[];
 }
 
 export const todoListState = atom<TodoList[]>({
@@ -21,26 +27,11 @@ export const todoItemState = atom<IToDoItem[]>({
   key: "todoItemState",
   default: [],
 });
-
-// {
-//   TodoList:
-// [
-//     id: string;
-//     title: string;
-//     toDoItem?: {
-//       id: number;
-//       title: string;
-//      contents:string
-//       isComplete: boolean;
-//     },
-//     id: string;
-//     title: string;
-//     toDoItem?: {
-//       id: number;
-//       title: string;
-//      contents:string
-//       isComplete: boolean;
-//     };
-// ]
-//
-// }
+export const TodoListCopyState = atom<ICopyToDoItem[]>({
+  key: "TodoListCopyState",
+  default: [],
+});
+export const activeListState = atom<string>({
+  key: "activeListState",
+  default: "",
+});

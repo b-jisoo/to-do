@@ -16,6 +16,7 @@ const Container = styled.section`
 
 const Content = styled.div`
   ${flexCenter}
+  align-items: flex-start;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;

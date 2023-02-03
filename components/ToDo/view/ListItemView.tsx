@@ -2,13 +2,14 @@ import styled from "@emotion/styled";
 import React from "react";
 import { IToDoListItemViewProps } from "../types";
 
-const Wrap = styled.ul`
+const Wrap = styled.ul<{ id: string; active: string }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
   border-radius: 0.5em;
-  margin-top: 20px;
+  margin-top: 3px;
+  background-color: ${({ id, active }) => (id === active ? "#cecece" : null)};
 
   :hover {
     background-color: #cecece;
@@ -30,10 +31,16 @@ const List = styled.li`
 
 const ListItemView = ({
   todoList,
+  activeList,
+  onActiveList,
   onDeleteToDoList,
 }: IToDoListItemViewProps) => {
   return (
-    <Wrap>
+    <Wrap
+      id={todoList.id}
+      active={activeList}
+      onClick={() => onActiveList(todoList.id)}
+    >
       <List key={todoList.id}>{`${todoList.title}`}</List>
       <div onClick={() => onDeleteToDoList(todoList.id)}>x</div>
     </Wrap>

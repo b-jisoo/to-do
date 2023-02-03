@@ -3,6 +3,9 @@ import { IToDoItem, TodoList } from "@/recoil/ToDo";
 export interface IToDoListItemProps {
   todoList: TodoList;
 }
+export interface IToDoItemProps {
+  todoItem: IToDoItem[];
+}
 export interface IToDoListItemViewProps {
   todoList: TodoList;
   activeList: string;
@@ -19,8 +22,7 @@ export interface ITodoListViewProps {
   onAddToDoListModalOpen: () => void;
 }
 export interface ITodoItemViewProps {
-  todoItem: IToDoItem[];
-  todoList: TodoList[];
+  filteredItem: IToDoItem[];
 }
 export interface IEmptyProps {
   text: string;

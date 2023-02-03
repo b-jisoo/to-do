@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import { ITodoListViewProps } from "../types";
 import AddToDoListModal from "@/components/ToDoModal/AddToDoListModal";
-import ListItem from "../listItem";
+import ListItem from "../ListItem";
 
 const Container = styled.div`
   display: flex;
@@ -17,6 +17,7 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: end;
   margin-top: 20px;
+  margin-bottom: 20px;
 
   img {
     cursor: pointer;
@@ -36,12 +37,12 @@ const TodoListView = ({ ToDo, onAddToDoListModalOpen }: ITodoListViewProps) => {
           onClick={onAddToDoListModalOpen}
         />
       </ButtonContainer>
+      <AddToDoListModal />
       <div>
         {ToDo.map((todoList, index) => (
           <ListItem todoList={todoList} key={todoList.id} />
         ))}
       </div>
-      <AddToDoListModal />
     </Container>
   );
 };

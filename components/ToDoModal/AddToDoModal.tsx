@@ -1,5 +1,5 @@
 import { IsAddToDoModalState } from "@/recoil/Modal";
-import { todoItemState } from "@/recoil/ToDo";
+import { activeListState, todoItemState } from "@/recoil/ToDo";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { v4 as uuidv4 } from "uuid";
@@ -9,37 +9,41 @@ import AddToDoModalView from "./View/AddToDoModalView";
 const AddToDoModal = () => {
   const [isOpen, setIsOpen] = useRecoilState(IsAddToDoModalState);
   const [todoItem, setTodoItem] = useRecoilState(todoItemState);
-  const [toDoData, setToDoData] = useState({
+  const [activeList, setActiveList] = useRecoilState(activeListState);
+
+  const [toDoInputs, setToDoInputs] = useState({
     title: "",
     contents: "",
   });
 
   const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setToDoData((p) => ({ ...p, title: e.target.value }));
+    setToDoInputs((p) => ({ ...p, title: e.target.value }));
   };
   const onChangeContent = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setToDoData((p) => ({ ...p, contents: e.target.value }));
+    setToDoInputs((p) => ({ ...p, contents: e.target.value }));
   };
+  const todoItemInputValue = {
+    id: uuidv4(),
+    listId: activeList,
+    title: toDoInputs.title,
+    contents: toDoInputs.contents,
+    isComplete: true,
+  };
+
   const onAddToDoItem = () => {
-    setTodoItem((oldTodoItem) => [
-      ...oldTodoItem,
-      {
-        id: uuidv4(),
-        title: toDoData.title,
-        contents: toDoData.contents,
-        isComplete: true,
-      },
-    ]);
-    setToDoData({
+    setTodoItem((oldTodoItem) => [...oldTodoItem, todoItemInputValue]);
+
+    setToDoInputs({
       title: "",
       contents: "",
     });
     setIsOpen(false);
   };
 
+  // closeModal + reset
   const onCloseModal = () => {
     if (confirm("정말 닫으시겠습니까?")) {
-      setToDoData({
+      setToDoInputs({
         title: "",
         contents: "",
       });
@@ -53,7 +57,7 @@ const AddToDoModal = () => {
     onChangeTitle,
     onChangeContent,
     onAddToDoItem,
-    toDoData,
+    toDoData: toDoInputs,
   };
 
   return <AddToDoModalView {...AddToDoModalProps} />;

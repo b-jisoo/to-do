@@ -13,10 +13,10 @@ const Article = styled.article`
   margin-bottom: 20px;
 `;
 
-const ToDoItemView = ({ todoItem, todoList }: ITodoItemViewProps) => {
+const ToDoItemView = ({ filteredItem }: ITodoItemViewProps) => {
   return (
     <>
-      {todoItem.map((todoItem) => (
+      {filteredItem.map((todoItem) => (
         <Article key={todoItem.id}>
           <Checkbox title={todoItem.title} contents={todoItem.contents} />
         </Article>

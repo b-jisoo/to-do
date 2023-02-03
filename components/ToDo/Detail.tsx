@@ -1,5 +1,5 @@
 import { IsAddToDoModalState } from "@/recoil/Modal";
-import { todoItemState, todoListState } from "@/recoil/ToDo";
+import { activeListState, todoItemState, todoListState } from "@/recoil/ToDo";
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { IToDoDetailViewProps } from "./types";
@@ -7,7 +7,6 @@ import ToDoDetailView from "./view/DetailView";
 
 const ToDoDetail = () => {
   const [isOpen, setIsOpen] = useRecoilState(IsAddToDoModalState);
-  const [todoItem, setTodoItem] = useRecoilState(todoItemState);
   const todoList = useRecoilValue(todoListState);
 
   const handleModalOpen = () => {
