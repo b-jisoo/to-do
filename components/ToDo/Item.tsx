@@ -1,13 +1,17 @@
-import { activeListState, todoItemState, todoListState } from "@/recoil/ToDo";
-import React, { useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import {
+  SelectedListIdState,
+  todoItemState,
+  todoListState,
+} from "@/recoil/ToDo";
+import React from "react";
+import { useRecoilValue } from "recoil";
 import EmptyComponent from "../Common/Empty";
-import { IToDoItemProps, ITodoItemViewProps } from "./types";
+import { ITodoItemViewProps } from "./types";
 import ToDoItemView from "./view/ItemView";
 
 const ToDoItem = () => {
   const todoList = useRecoilValue(todoListState);
-  const listId = useRecoilValue(activeListState);
+  const listId = useRecoilValue(SelectedListIdState);
   const todoItem = useRecoilValue(todoItemState);
 
   if (todoList.length === 0) {

@@ -13,7 +13,8 @@ export interface IToDoListItemViewProps {
   onActiveList: (id: string) => void;
 }
 export interface IToDoDetailViewProps {
-  handleModalOpen: () => void;
+  onModalOpen: () => void;
+  onClickButton: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export interface ITodoListViewProps {

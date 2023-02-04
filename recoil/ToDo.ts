@@ -7,11 +7,6 @@ export interface IToDoItem {
   contents: string;
   isComplete: boolean;
 }
-export interface ICopyToDoItem {
-  id?: string;
-  title?: string;
-  toDoItem?: IToDoItem[];
-}
 
 export interface TodoList {
   id: string;
@@ -27,11 +22,8 @@ export const todoItemState = atom<IToDoItem[]>({
   key: "todoItemState",
   default: [],
 });
-export const TodoListCopyState = atom<ICopyToDoItem[]>({
-  key: "TodoListCopyState",
-  default: [],
-});
-export const activeListState = atom<string>({
+
+export const SelectedListIdState = atom<string>({
   key: "activeListState",
   default: "",
 });

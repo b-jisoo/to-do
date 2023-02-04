@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ICheckbox } from "./types";
 
 function Checkbox({ contents, title }: ICheckbox) {
-  const [isCheckd, setIsCheckd] = useState<boolean>(false);
+  const [isCheckd, setIsCheckd] = useState(false);
 
   const handleClick = (e: SyntheticEvent) => {
     setIsCheckd((e.target as HTMLInputElement).checked);

@@ -1,4 +1,3 @@
-import Checkbox from "@/components/Common/CheckBox";
 import { flexCenter } from "@/styles/flex";
 import styled from "styled-components";
 import { StyledButton } from "@/styles/StyledButton";
@@ -53,17 +52,20 @@ const DeleteButton = styled(StyledButton)`
   }
 `;
 
-const ToDoDetailView = ({ handleModalOpen }: IToDoDetailViewProps) => {
+const ToDoDetailView = ({
+  onModalOpen,
+  onClickButton,
+}: IToDoDetailViewProps) => {
   return (
     <Container>
       <ToDoHeader>
         <span>ToDos</span>
-        <NewButton onClick={handleModalOpen}>New</NewButton>
+        <NewButton onClick={onModalOpen}>New</NewButton>
       </ToDoHeader>
       <AddToDoModal />
       <ToDoItem />
       <ToDoFooter>
-        <DeleteButton>Delete</DeleteButton>
+        <DeleteButton onClick={onClickButton}>Delete</DeleteButton>
       </ToDoFooter>
     </Container>
   );
