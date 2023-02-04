@@ -18,7 +18,11 @@ const ToDoItemView = ({ filteredItem }: ITodoItemViewProps) => {
     <>
       {filteredItem.map((todoItem) => (
         <Article key={todoItem.id}>
-          <Checkbox title={todoItem.title} contents={todoItem.contents} />
+          <Checkbox
+            title={todoItem.title}
+            contents={todoItem.contents}
+            id={todoItem.id}
+          />
         </Article>
       ))}
     </>

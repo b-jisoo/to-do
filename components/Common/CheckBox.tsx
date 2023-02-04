@@ -1,18 +1,33 @@
+import { todoItemState } from "@/recoil/ToDo";
 import React, { SyntheticEvent, useState } from "react";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { ICheckbox } from "./types";
 
-function Checkbox({ contents, title }: ICheckbox) {
+function Checkbox({ contents, title, id }: ICheckbox) {
   const [isCheckd, setIsCheckd] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
+  const [todoItem, setTodoItem] = useRecoilState(todoItemState);
 
   const handleClick = (e: SyntheticEvent) => {
     setIsCheckd((e.target as HTMLInputElement).checked);
+    setIsComplete(!isComplete);
+
+    const itemIndex = todoItem.findIndex((item) => item.id === id);
+    let copyTodoItem = [...todoItem];
+    if (itemIndex !== -1)
+      copyTodoItem[itemIndex] = {
+        ...copyTodoItem[itemIndex],
+        isComplete,
+      };
+    setTodoItem(copyTodoItem);
+    console.log(isComplete);
   };
 
   return (
-    <StyledLabel htmlFor={contents} onClick={handleClick}>
-      <StyledInput type="checkbox" id={contents} name={contents} />
-      <StyledP isCheckd={isCheckd}>
+    <StyledLabel htmlFor={contents} isCheckd={isCheckd}>
+      <StyledInput type="checkbox" onClick={handleClick} />
+      <StyledP>
         <BoldFont>{title}</BoldFont>
         {contents}
       </StyledP>
@@ -22,11 +37,12 @@ function Checkbox({ contents, title }: ICheckbox) {
 
 export default Checkbox;
 
-const StyledLabel = styled.label`
+const StyledLabel = styled.label<{ isCheckd: boolean }>`
   display: flex;
   align-items: center;
   user-select: none;
   cursor: pointer;
+  text-decoration: ${(props) => (props.isCheckd ? "line-through" : "none")};
 `;
 
 const StyledInput = styled.input`
@@ -48,9 +64,8 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledP = styled.div<{ isCheckd: boolean }>`
+const StyledP = styled.div`
   margin-left: 15px;
-  text-decoration: ${(props) => (props.isCheckd ? "line-through" : "none")};
 `;
 
 const BoldFont = styled.h1`

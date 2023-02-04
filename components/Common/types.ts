@@ -2,6 +2,7 @@ import { IChildrenProps } from "@/types/children";
 import { ReactNode } from "react";
 
 export interface ICheckbox {
+  id: string;
   title: string;
   contents: string;
 }
