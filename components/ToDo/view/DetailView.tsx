@@ -52,10 +52,7 @@ const DeleteButton = styled(StyledButton)`
   }
 `;
 
-const ToDoDetailView = ({
-  onModalOpen,
-  onClickButton,
-}: IToDoDetailViewProps) => {
+const ToDoDetailView = ({ onModalOpen, onDelteToDo }: IToDoDetailViewProps) => {
   return (
     <Container>
       <ToDoHeader>
@@ -65,7 +62,7 @@ const ToDoDetailView = ({
       <AddToDoModal />
       <ToDoItem />
       <ToDoFooter>
-        <DeleteButton onClick={onClickButton}>Delete</DeleteButton>
+        <DeleteButton onClick={onDelteToDo}>Delete</DeleteButton>
       </ToDoFooter>
     </Container>
   );

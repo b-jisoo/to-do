@@ -1,3 +1,4 @@
+import useToDoActions from "@/action/todo.actions";
 import { IsAddToDoModalState } from "@/recoil/Modal";
 import { SelectedListIdState, todoItemState } from "@/recoil/ToDo";
 import React, { useState } from "react";
@@ -9,10 +10,10 @@ import AddToDoModalView from "./View/AddToDoModalView";
 const AddToDoModal = () => {
   const [toDoInputs, setToDoInputs] = useState({ title: "", contents: "" });
   const [isOpen, setIsOpen] = useRecoilState(IsAddToDoModalState);
-  const [todoItem, setTodoItem] = useRecoilState(todoItemState);
   const listId = useRecoilValue(SelectedListIdState);
+  const Todo = useToDoActions();
 
-  const todoItemInputValue = {
+  const todoItemInputs = {
     id: uuidv4(),
     listId,
     title: toDoInputs.title,
@@ -28,7 +29,7 @@ const AddToDoModal = () => {
   };
 
   const onAddToDoItem = () => {
-    setTodoItem((oldTodoItem) => [...oldTodoItem, todoItemInputValue]);
+    Todo.addItem(todoItemInputs);
     setToDoInputs({ title: "", contents: "" });
     setIsOpen(false);
   };

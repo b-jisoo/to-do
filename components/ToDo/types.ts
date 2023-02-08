@@ -14,12 +14,20 @@ export interface IToDoListItemViewProps {
 }
 export interface IToDoDetailViewProps {
   onModalOpen: () => void;
-  onClickButton: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onDelteToDo: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export interface ITodoListViewProps {
   ToDo: TodoList[];
   isOpen: boolean;
+  session: {
+    user?: {
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+    };
+    expires: string;
+  } | null;
   onAddToDoListModalOpen: () => void;
 }
 export interface ITodoItemViewProps {

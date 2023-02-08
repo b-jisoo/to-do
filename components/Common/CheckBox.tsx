@@ -6,7 +6,7 @@ import { ICheckbox } from "./types";
 
 function Checkbox({ contents, title, id }: ICheckbox) {
   const [isCheckd, setIsCheckd] = useState(false);
-  const [isComplete, setIsComplete] = useState(false);
+  const [isComplete, setIsComplete] = useState(true);
   const [todoItem, setTodoItem] = useRecoilState(todoItemState);
 
   const handleClick = (e: SyntheticEvent) => {
@@ -21,7 +21,6 @@ function Checkbox({ contents, title, id }: ICheckbox) {
         isComplete,
       };
     setTodoItem(copyTodoItem);
-    console.log(isComplete);
   };
 
   return (
@@ -41,7 +40,6 @@ const StyledLabel = styled.label<{ isCheckd: boolean }>`
   display: flex;
   align-items: center;
   user-select: none;
-  cursor: pointer;
   text-decoration: ${(props) => (props.isCheckd ? "line-through" : "none")};
 `;
 

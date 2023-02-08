@@ -1,3 +1,4 @@
+import useToDoActions from "@/action/todo.actions";
 import { IsAddToDoModalState } from "@/recoil/Modal";
 import { todoItemState, todoListState } from "@/recoil/ToDo";
 import React from "react";
@@ -8,7 +9,7 @@ import ToDoDetailView from "./view/DetailView";
 const ToDoDetail = () => {
   const [isOpen, setIsOpen] = useRecoilState(IsAddToDoModalState);
   const todoList = useRecoilValue(todoListState);
-  const [todoItem, setTodoItem] = useRecoilState(todoItemState);
+  const Todo = useToDoActions();
 
   const onModalOpen = () => {
     if (todoList.length === 0) {
@@ -18,15 +19,14 @@ const ToDoDetail = () => {
     }
   };
 
-  const onClickButton = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onDelteToDo = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const newTodoItem = todoItem.filter((item) => item.isComplete === false);
-    setTodoItem(newTodoItem);
+    Todo.deleteItem();
   };
 
   const ToDoDetailViewProps: IToDoDetailViewProps = {
     onModalOpen,
-    onClickButton,
+    onDelteToDo,
   };
 
   return <ToDoDetailView {...ToDoDetailViewProps} />;

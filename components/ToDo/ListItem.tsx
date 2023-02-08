@@ -1,3 +1,4 @@
+import useToDoActions from "@/action/todo.actions";
 import {
   SelectedListIdState,
   todoItemState,
@@ -9,9 +10,8 @@ import { IToDoListItemProps, IToDoListItemViewProps } from "./types";
 import ListItemView from "./view/ListItemView";
 
 const ListItem = ({ todoList }: IToDoListItemProps) => {
-  const [toDoItem, setToDoItem] = useRecoilState(todoItemState);
-  const [toDoList, setToDoList] = useRecoilState(todoListState);
   const [activeList, setActiveList] = useRecoilState(SelectedListIdState);
+  const ToDo = useToDoActions();
 
   if (!todoList) {
     return null;
@@ -21,10 +21,7 @@ const ListItem = ({ todoList }: IToDoListItemProps) => {
   };
 
   const onDeleteToDoList = (id: string) => {
-    const removeTodoList = toDoList.filter((list) => list.id !== id);
-    const removeTodoItem = toDoItem.filter((item) => item.listId !== id);
-    setToDoList(removeTodoList);
-    setToDoItem(removeTodoItem);
+    ToDo.deleteList(id);
   };
 
   const ToDoListItemView: IToDoListItemViewProps = {
