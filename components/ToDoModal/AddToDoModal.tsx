@@ -1,4 +1,4 @@
-import useToDoActions from "@/action/todo.actions";
+import useToDoActions from "@/actions/todo";
 import { IsAddToDoModalState } from "@/recoil/Modal";
 import { SelectedListIdState, todoItemState } from "@/recoil/ToDo";
 import React, { useState } from "react";

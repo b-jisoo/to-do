@@ -1,13 +1,6 @@
-export interface IHeaderProps {
-  status: "loading" | "authenticated" | "unauthenticated";
-  session: Session | null | undefined;
-}
+import { UserAccount } from "@/recoil/user";
 
-interface Session {
-  user?: {
-    name?: string | null;
-    email?: string | null;
-    image?: string | null;
-  };
-  expires: string;
+export interface IHeaderProps {
+  auth: UserAccount | null;
+  onLogout: () => void;
 }

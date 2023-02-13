@@ -1,4 +1,5 @@
 import { IToDoItem, TodoList } from "@/recoil/ToDo";
+import { UserAccount } from "@/recoil/user";
 
 export interface IToDoListItemProps {
   todoList: TodoList;
@@ -20,14 +21,7 @@ export interface IToDoDetailViewProps {
 export interface ITodoListViewProps {
   ToDo: TodoList[];
   isOpen: boolean;
-  session: {
-    user?: {
-      name?: string | null;
-      email?: string | null;
-      image?: string | null;
-    };
-    expires: string;
-  } | null;
+  auth: UserAccount | null;
   onAddToDoListModalOpen: () => void;
 }
 export interface ITodoItemViewProps {

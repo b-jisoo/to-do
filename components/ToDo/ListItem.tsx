@@ -1,4 +1,4 @@
-import useToDoActions from "@/action/todo.actions";
+import useToDoActions from "@/actions/todo";
 import {
   SelectedListIdState,
   todoItemState,

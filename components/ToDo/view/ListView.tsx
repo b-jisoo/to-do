@@ -25,17 +25,23 @@ const ButtonContainer = styled.div`
   }
 `;
 
-const TodoListView = ({ ToDo, onAddToDoListModalOpen }: ITodoListViewProps) => {
+const TodoListView = ({
+  ToDo,
+  onAddToDoListModalOpen,
+  auth,
+}: ITodoListViewProps) => {
   return (
     <Container>
       <ButtonContainer>
-        <Image
-          src="/addFolder.png"
-          alt="addfolder"
-          width="20"
-          height="20"
-          onClick={onAddToDoListModalOpen}
-        />
+        {auth ? (
+          <Image
+            src="/addFolder.png"
+            alt="addfolder"
+            width="20"
+            height="20"
+            onClick={onAddToDoListModalOpen}
+          />
+        ) : null}
       </ButtonContainer>
       <AddToDoListModal />
       <div>

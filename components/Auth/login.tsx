@@ -1,14 +1,14 @@
-import AuthAPI from "@/api/auth";
-import { signIn } from "next-auth/react";
+import useUserAction from "@/actions/user";
 import React, { SyntheticEvent, useState } from "react";
 import { emailValidator, passwordValidator } from "../../utils/validator";
 import { ILoginProps } from "./types";
 import LoginView from "./view/LoginView";
 
 const Login = () => {
+  const user = useUserAction();
   const [inputs, setInputs] = useState({
-    email: "",
-    password: "",
+    email: "testuser@email.com",
+    password: "12341234",
   });
   const [validData, setValidData] = useState({
     isEmailValid: false,
@@ -30,16 +30,16 @@ const Login = () => {
     setInputs((p) => ({ ...p, password: e.target.value }));
   };
 
-  const onSubmit = (e: SyntheticEvent) => {
+  const onLogin = (e: SyntheticEvent) => {
     e.preventDefault();
-    AuthAPI.login(inputs);
+    user.login(inputs);
   };
 
   const LoginProps: ILoginProps = {
     inputs,
     onChangeEmail,
     onChangePassword,
-    onSubmit,
+    onLogin,
     isNotEnterPassword,
     isNotEnterEmail,
     validData,

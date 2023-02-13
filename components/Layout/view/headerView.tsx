@@ -2,7 +2,6 @@ import { flexCenter } from "@/styles/flex";
 import styled from "styled-components";
 import React from "react";
 import Link from "next/link";
-import { signOut } from "next-auth/react";
 import { BlueStyle } from "@/styles/blue";
 import { IHeaderProps } from "../type";
 
@@ -39,13 +38,13 @@ const LoginButton = styled.div`
   }
 `;
 
-const HeaderView = ({ status, session }: IHeaderProps) => {
+const HeaderView = ({ auth, onLogout }: IHeaderProps) => {
   return (
     <Container id="Header">
       <Wrapper>
         <Logo>ToDos</Logo>
-        {session ? (
-          <LogOutButton onClick={() => signOut()}>로그아웃</LogOutButton>
+        {auth ? (
+          <LogOutButton onClick={onLogout}>로그아웃</LogOutButton>
         ) : (
           <LoginButton>
             <Link href={"/auth/login"}>로그인</Link>

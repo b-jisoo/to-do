@@ -25,7 +25,7 @@ const LoginView = ({
   inputs,
   onChangeEmail,
   onChangePassword,
-  onSubmit,
+  onLogin,
   isNotEnterPassword,
   isNotEnterEmail,
   validData,
@@ -59,7 +59,7 @@ const LoginView = ({
             : "비밀번호는 8자리 이상이어야 합니다."
         }
       />
-      <Button size="large" variant="contained" onClick={onSubmit}>
+      <Button size="large" variant="contained" onClick={onLogin}>
         로그인
       </Button>
       <Typography textAlign="center" variant="caption">

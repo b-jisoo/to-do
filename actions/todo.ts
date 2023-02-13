@@ -5,7 +5,6 @@ import {
   TodoList,
   todoListState,
 } from "@/recoil/ToDo";
-import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 const useToDoActions = () => {

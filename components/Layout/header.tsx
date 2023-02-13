@@ -1,14 +1,21 @@
-import { useSession } from "next-auth/react";
+import useUserAction from "@/actions/user";
+import { authState } from "@/recoil/user";
 import React from "react";
+import { useRecoilValue } from "recoil";
 import { IHeaderProps } from "./type";
 import HeaderView from "./view/headerView";
 
 const Header = () => {
-  const { data: session, status } = useSession();
+  const auth = useRecoilValue(authState);
+  const user = useUserAction();
+
+  const onLogout = () => {
+    user.logout();
+  };
 
   const HeaderProps: IHeaderProps = {
-    session,
-    status,
+    auth,
+    onLogout,
   };
 
   return <HeaderView {...HeaderProps} />;
