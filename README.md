@@ -1,38 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Preview
 
-## Getting Started
+### 회원가입 후 로그인 및 Todo 작성
 
-First, run the development server:
+![리스트 생성](https://user-images.githubusercontent.com/71222288/219447225-ab741508-847d-4a7a-bdc4-1773fed8a72f.gif)
 
-```bash
+### Todo 삭제
+
+![삭제](https://user-images.githubusercontent.com/71222288/219447210-6ed53665-147e-4e03-81a0-0fc7be1b72ff.gif)
+
+## 📃 프로젝트의 실행 방법
+
+```
+npm install
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+기본 주소는 [http://localhost:3000](http://localhost:3000)으로, 실행 후 해당 주소로 접속하시면 됩니다.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+# 구현 기능
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- 회원가입
+- 로그인
+- Todo List, Todo 작성 및 삭제
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<br>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# 구현 중점사항
 
-## Learn More
+- 이번 프로젝트는 부족한 기본기를 키우기 위해, 라이브러리를 최대한 사용하지 않고 구현 해보았습니다.
 
-To learn more about Next.js, take a look at the following resources:
+- 서버와 DB를 사용하지 않았습니다.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 클린코드를 위해 VAC 패턴을 사용하였습니다.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<br>
 
-## Deploy on Vercel
+## VAC 패턴(View Asset Component)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### VAC패턴은 비즈니스 로직과 뷰를 완전히 분리한 컴포넌트 패턴이다.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![image](https://user-images.githubusercontent.com/71222288/219900256-ab981cf6-506f-444e-841f-6a06fee62702.png)
+
+VAC는 다음과 같은 특징을 가지고 있습니다.
+
+- 반복이나 조건부 노출, 스타일 제어와 같은 렌더링과 관련된 처리만을 수행합니다.
+- 오직 props를 통해서만 제어되며 스스로의 상태를 관리하거나 변경하지 않는 stateless 컴포넌트입니다.
+- 이벤트에 함수를 바인딩할 때 어떠한 추가 처리도 하지 않습니다.
