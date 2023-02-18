@@ -1,4 +1,3 @@
-import Button from "@mui/material/Button";
 import styled, { css, keyframes } from "styled-components";
 import { IModalProps } from "../types";
 

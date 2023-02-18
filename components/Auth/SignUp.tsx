@@ -1,6 +1,6 @@
 import useUserAction from "@/actions/user";
 import { emailValidator, passwordValidator } from "@/utils/validator";
-import React, { SyntheticEvent, useState } from "react";
+import React, { useState } from "react";
 import { ISignUpProps } from "./types";
 import SignUpView from "./view/SignUpView";
 
