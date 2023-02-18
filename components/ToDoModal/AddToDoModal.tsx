@@ -21,30 +21,23 @@ const AddToDoModal = () => {
     isComplete: false,
   };
 
-  const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setToDoInputs((p) => ({ ...p, title: e.target.value }));
-  };
-  const onChangeContent = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setToDoInputs((p) => ({ ...p, contents: e.target.value }));
-  };
-
-  const onAddToDoItem = () => {
-    Todo.addItem(todoItemInputs);
-    setToDoInputs({ title: "", contents: "" });
-    setIsOpen(false);
-  };
-
-  const onCloseModal = () => {
-    setToDoInputs({ title: "", contents: "" });
-    setIsOpen(false);
-  };
-
   const AddToDoModalProps: IAddToDoModalProps = {
     isOpen,
-    onCloseModal,
-    onChangeTitle,
-    onChangeContent,
-    onAddToDoItem,
+    onCloseModal: () => {
+      setToDoInputs({ title: "", contents: "" });
+      setIsOpen(false);
+    },
+    onChangeTitle: (e) => {
+      setToDoInputs((p) => ({ ...p, title: e.target.value }));
+    },
+    onChangeContent: (e) => {
+      setToDoInputs((p) => ({ ...p, contents: e.target.value }));
+    },
+    onAddToDoItem: () => {
+      Todo.addItem(todoItemInputs);
+      setToDoInputs({ title: "", contents: "" });
+      setIsOpen(false);
+    },
     toDoData: toDoInputs,
   };
 

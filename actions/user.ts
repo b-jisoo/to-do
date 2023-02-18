@@ -10,14 +10,13 @@ export const useUserAction = () => {
   const login = (inputs: UserAccount) => {
     const { email, password } = inputs;
     const user = users.find(
-      (x) => x.email === email && x.password === password
+      (p) => p.email === email && p.password === password
     );
-    console.log(user);
     if (!user) return alert("아이디 또는 비밀번호가 일치하지 않습니다 ");
 
     localStorage.setItem("user", JSON.stringify(user));
     setAuth(user);
-    router.push("/");
+    router.push("http://localhost:3000/");
   };
 
   const logout = () => {

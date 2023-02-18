@@ -11,15 +11,11 @@ const TodoList = () => {
   const [isOpen, setIsOpen] = useRecoilState(IsAddToDoModalListState);
   const auth = useRecoilValue(authState);
 
-  const onAddToDoListModalOpen = () => {
-    setIsOpen(true);
-  };
-
   const TodoListViewProps: ITodoListViewProps = {
     ToDo,
     isOpen,
-    onAddToDoListModalOpen,
     auth,
+    onAddToDoListModalOpen: () => setIsOpen(true),
   };
   return <TodoListView {...TodoListViewProps} />;
 };

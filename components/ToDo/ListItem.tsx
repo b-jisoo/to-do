@@ -13,22 +13,13 @@ const ListItem = ({ todoList }: IToDoListItemProps) => {
   const [activeList, setActiveList] = useRecoilState(SelectedListIdState);
   const ToDo = useToDoActions();
 
-  if (!todoList) {
-    return null;
-  }
-  const onActiveList = (id: string) => {
-    setActiveList(id);
-  };
-
-  const onDeleteToDoList = (id: string) => {
-    ToDo.deleteList(id);
-  };
+  if (!todoList) return null;
 
   const ToDoListItemView: IToDoListItemViewProps = {
     todoList,
     activeList,
-    onDeleteToDoList,
-    onActiveList,
+    onDeleteToDoList: (id) => ToDo.deleteList(id),
+    onActiveList: (id) => setActiveList(id),
   };
 
   return <ListItemView {...ToDoListItemView} />;

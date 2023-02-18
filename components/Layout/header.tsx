@@ -9,13 +9,9 @@ const Header = () => {
   const auth = useRecoilValue(authState);
   const user = useUserAction();
 
-  const onLogout = () => {
-    user.logout();
-  };
-
   const HeaderProps: IHeaderProps = {
     auth,
-    onLogout,
+    onLogout: () => user.logout(),
   };
 
   return <HeaderView {...HeaderProps} />;

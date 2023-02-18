@@ -11,22 +11,12 @@ const ToDoDetail = () => {
   const todoList = useRecoilValue(todoListState);
   const Todo = useToDoActions();
 
-  const onModalOpen = () => {
-    if (todoList.length === 0) {
-      alert("ToDo 목록을 먼저 생성해주세요.");
-    } else {
-      setIsOpen(true);
-    }
-  };
-
-  const onDelteToDo = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    Todo.deleteItem();
-  };
-
   const ToDoDetailViewProps: IToDoDetailViewProps = {
-    onModalOpen,
-    onDelteToDo,
+    onModalOpen: () => {
+      if (todoList.length === 0) alert("ToDo 목록을 먼저 생성해주세요.");
+      else setIsOpen(true);
+    },
+    onDelteToDo: () => Todo.deleteItem(),
   };
 
   return <ToDoDetailView {...ToDoDetailViewProps} />;

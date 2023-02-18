@@ -15,7 +15,7 @@ export interface IToDoListItemViewProps {
 }
 export interface IToDoDetailViewProps {
   onModalOpen: () => void;
-  onDelteToDo: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onDelteToDo: () => void;
 }
 
 export interface ITodoListViewProps {
