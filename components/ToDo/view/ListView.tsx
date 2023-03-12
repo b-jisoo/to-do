@@ -33,15 +33,13 @@ const TodoListView = ({
   return (
     <Container>
       <ButtonContainer>
-        {auth ? (
-          <Image
-            src="/addFolder.png"
-            alt="addfolder"
-            width="20"
-            height="20"
-            onClick={onAddToDoListModalOpen}
-          />
-        ) : null}
+        <Image
+          src="/addFolder.png"
+          alt="addfolder"
+          width="20"
+          height="20"
+          onClick={onAddToDoListModalOpen}
+        />
       </ButtonContainer>
       <AddToDoListModal />
       <div>
