@@ -16,7 +16,7 @@ export const useUserAction = () => {
 
     localStorage.setItem("user", JSON.stringify(user));
     setAuth(user);
-    router.push("http://localhost:3000/");
+    router.push("/");
   };
 
   const logout = () => {
