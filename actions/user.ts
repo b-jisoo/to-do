@@ -14,7 +14,7 @@ export const useUserAction = () => {
     );
     if (!user) return alert("아이디 또는 비밀번호가 일치하지 않습니다 ");
 
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("user", JSON.stringify(user.email));
     setAuth(user);
     router.push("/");
   };
